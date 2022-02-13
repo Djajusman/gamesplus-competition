@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --fontregular: 400;
+  --fontsemibold: 600;
+  --fontbold: 700;
+
+  --grey30: #8f8f8f;
+  --grey50: #3a3a3a;
+  --grey70: #282828;
+  --grey90: #171717;
+  --white: #ffffff;
+  --black: #000000;
+  --red50: #fa262f;
+  --red90: #5a1013;
+  --blue30: #37a8da;
+  --blue50: #00628b;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+p,
+label {
+  font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+  display: none;
+}
+
+h3 {
+  margin: 0;
+  width: 197px;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.48px;
+  color: var(--white);
+  font-weight: var(--fontregular);
+}
+
+tr {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.details {
+  position: absolute;
+  width: 328px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.48px;
+
+  color: #ffffff;
+}
+.detailReward {
+  position: absolute;
+  width: 253px;
+  height: 15px;
+  left: 59px;
+  top: 823px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 14px;
+  /* or 141% */
+
+  color: #ffffff;
+}
+.detailPrize {
+  position: absolute;
+  width: 38px;
+  height: 16px;
+  left: 40px;
+  top: 849px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.515556px;
+  color: #ffffff;
+}
+.competitionName {
+  position: absolute;
+  width: 202px;
+  height: 22px;
+  left: 114px;
+  top: 148px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  letter-spacing: 0.687407px;
+
+  color: #ffffff;
+}
+.competitionPublisher {
+  position: absolute;
+  width: 98px;
+  height: 14px;
+  left: 114px;
+  top: 170px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 14px;
+  /* identical to box height */
+
+  letter-spacing: 0.42963px;
+
+  color: #8f8f8f;
+}
+.competitionEndDate {
+  position: absolute;
+  width: 102px;
+  height: 14px;
+  left: 114px;
+  top: 184px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 14px;
+  /* identical to box height */
+
+  color: #ffffff;
+}
+.competitionTotal {
+  position: absolute;
+  left: 38.89%;
+  right: 45.56%;
+  top: 30.17%;
+  bottom: 68.68%;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 6px;
+  line-height: 8px;
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+}
+.competitionTotalReward {
+  position: absolute;
+  left: 38.89%;
+  right: 43.33%;
+  top: 30.89%;
+  bottom: 66.38%;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+}
+.leaderboardLastUpdateText {
+  position: absolute;
+  left: 36.39%;
+  right: 32.22%;
+  top: 43.1%;
+  bottom: 55.32%;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 11px;
+  /* identical to box height */
+
+  text-align: right;
+
+  color: #ffffff;
+}
+.footer {
+  position: absolute;
+
+  font-family: Open Sans;
+  font-size: 10px;
+
+  color: #ffffff;
+}
+.footerButton {
+  position: absolute;
+  width: 110px;
+  height: 19px;
+  left: 125px;
+  top: 636px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.56px;
+
+  color: #ffffff;
+}

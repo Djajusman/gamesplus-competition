@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+  <html lang=en-us dir=ltr>
+    <head><title>RCTI+</title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="theme-color" content="#000000" /><link rel="icon" href="%PUBLIC_URL%/favicon.ico" /><link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /><link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    </head>
+    
+  <!-- GA -->
+    <script>
+      function addScript(gaId){
+        let script = document.createElement('script')
+        script.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id='+gaId)
+        document.head.appendChild(script)
+      }
+      function addScriptLayerGA(gaId){
+        let script = document.createElement('script')
+        script.append("\
+          window.dataLayer = window.dataLayer || [];\
+          function gtag(){dataLayer.push(arguments);}\
+          gtag('js', new Date());\
+          gtag('config', '"+gaId+"');\
+        ")
+        document.head.appendChild(script)
+      }
+      function addScriptGtm(gaId){
+        let script = document.createElement('script')
+        script.append("\
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=5NNZ52X2emxCtW3jqCoT_g&gtm_preview=env-12&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);\
+          })(window,document,'script','dataLayer','"+gaId+"');\
+        ")
+        document.head.appendChild(script)
+      }
+
+      const GA_RPLUS = "UA-111351533-16"
+      const GTM_VPLUS = "GTM-NPXGGTK"
+      const GA_VPLUS1 = "UA-111351533-8"
+      const GA_VPLUS2 = "UA-111351533-7"
+      const GA_VPLUS3 = "UA-145455301-15"
+
+      const path = location.pathname.split("/")
+
+      if(path[1] === "r"){
+        addScript(GA_RPLUS)
+        addScriptLayerGA(GA_RPLUS)
+        addScriptGtm(GA_RPLUS)
+      }else{
+        // addScriptGtm(GTM_VPLUS)
+        addScriptLayerGA(GA_VPLUS3)
+        // addScript(GA_VPLUS1)
+        addScriptLayerGA(GA_VPLUS1)
+        addScriptLayerGA(GA_VPLUS2)
+      }
+    </script>
+  <!-- End GA -->
+
+  <!-- alexa analytics -->
+    <script type="text/javascript">
+      _atrk_opts = { atrk_acct:"s+Whw1O7kI20L7", 
+        domain:"visionplus.id",
+        dynamic: true
+      };
+      (function() { 
+        var as = document.createElement('script'); 
+        as.type = 'text/javascript'; 
+        as.async = true; 
+        as.src = "https://certify-js.alexametrics.com/atrk.js"; 
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(as, s); 
+      })();
+    </script>
+    <noscript>
+      <img src="https://certify.alexametrics.com/atrk.gif?account=s+Whw1O7kI20L7" 
+          style="display:none" 
+          height="1" 
+          width="1" 
+          alt="" />
+    </noscript>
+      <link href="/css/Home/site.css" rel="stylesheet">
+      <link href="/css/toaster.css" rel="stylesheet" />
+      <link href="/css/game-item.css" rel="stylesheet" />
+      <link rel="stylesheet" href="/css/header-rplus/style.css">
+
+      <script>
+          function GetPlatform(name) {
+              var url = window.location.href;
+              name = name.replace(/[\[\]]/g, '\\$&');
+              var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)_'),
+                  results = regex.exec(url);
+              if (!results) return null;
+              if (!results[2]) return '';
+              return decodeURIComponent(results[2].replace(/\+/g, ' '));
+          }
+          var platform = localStorage.getItem('gameName').toLowerCase();
+
+          (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+              (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date(); a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0]; 
+              a.async = 1; 
+              a.src = g; m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+          ga('create', 'UA-111351533-19', 'auto'); // main R+
+          ga('create', 'UA-151252630-6', 'auto', 'teamTracker'); // main game
+          ga('create', 'UA-145455301-24', 'auto', 'teamTrackerRCTI'); // main game RCTI
+          ga('create', 'UA-82460087-22', 'auto', "gaWebTracker"); // main game aggregator
+          ga('send', 'pageview');
+          ga('teamTracker.send', 'pageview');
+          ga('teamTrackerRCTI.send', 'pageview');
+          ga('gaWebTracker.send', 'pageview');
+      </script>
+      <script>src="/js/home/analytics/guest.js"</script>
+    <!-- end alexa analytics -->
+
+    <!-- conviva -->
+      <script type="text/javascript">
+        src="statics/js/conviva/conviva-core-sdk.min.js"
+      </script>
+      <script type="text/javascript">
+        src="statics/js/conviva/conviva-html5native-impl.js"
+      </script>
+    <!-- end conviva -->
+
+    <!-- conviva setting -->
+      <script type="text/javascript">
+        function contivaSetting() {
+          if (document.title.indexOf('Error404') == -1) {
+            var script = document.createElement('script')
+              scripts = document.getElementsByTagName('script')[0]
+            script.src = "statics/js/conviva/configs.js"
+            script.async = true
+            script.crossorigin = 'anonymous'
+            scripts.parentNode.insertBefore(script, scripts)
+          }
+        }
+      </script>
+    <!-- end conviva setting -->
+
+    <!-- mnc analytic setting -->
+      <script src="https://analytic.mncanalytics.net/public/js/mncanalytics.min.js"></script>
+    <!-- end mnc analytic -->
+
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    
+    <script>
+      window.googletag = window.googletag || {cmd: []};
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/7108725/Now-Program_Banner_Dekstop', [450, 225], 'div-gpt-ad-1616670818012-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+      });
+    </script>
+
+    <!-- ads rectangle comment temporary -->
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-RectangleBanner_Website_Row1', [300, 250], 'div-gpt-ad-1632467534337-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-RectangleBanner_Website_Row2', [300, 250], 'div-gpt-ad-1632467659855-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-RectangleBanner_Website_Row3', [300, 250], 'div-gpt-ad-1632467785883-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-RectangleBanner_Website_Row4', [300, 250], 'div-gpt-ad-1632467890823-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-RectangleBanner_Website_Row5', [300, 250], 'div-gpt-ad-1632467959767-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+    <!-- end ads rectangle comment temporary -->
+
+    <!-- ads in msite detail -->
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-Leader_DetailPage_Msite_Series', [320, 50], 'div-gpt-ad-1637066183451-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-Leader_DetailPage_Msite_MOVIE', [320, 50], 'div-gpt-ad-1637066080975-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+      <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+          googletag.defineSlot('/7108725/VPLUS-Leader_DetailPage_Msite_LiveTV', [320, 50], 'div-gpt-ad-1637065870293-0').addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+    <!-- end ads in msite detail -->
+
+    <!-- Adsense -->
+      <script data-ad-client="ca-pub-3778681918825163" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+      </script>
+      <script type="text/javascript">
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '1925029224436141',
+            cookie     : true,  // enable cookies to allow the server to access the session
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v2.8' // use graph api version 2.8
+          });
+        };
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
+    <!-- end Adsense -->
+
+    <!-- Begin comScore Tag -->
+      <script>
+        var _comscore=_comscore||[];
+        _comscore.push({c1:"2",c2:"9013027"}),
+        function(){
+          var c=document.createElement("script"),
+          e=document.getElementsByTagName("script")[0];
+          c.async=!0,
+          c.src=("https:"==document.location.protocol?"https://sb":"http://b")+".scorecardresearch.com/beacon.js",
+          e.parentNode.insertBefore(c,e)
+        }();
+      </script>
+      <noscript>
+        <img alt="Share" src="https://b.scorecardresearch.com/p?c1=2&c2=9013027&cv=2.0&cj=1" />
+      </noscript>
+    <!-- End comScore Tag -->
+
+    <!-- Begin comScore Tag -->
+      <script>
+        var _comscore = _comscore || [];
+        _comscore.push({ c1: "2", c2: "33003457" }),
+        (function() {
+          var s = document.createElement("script"),
+          el = document.getElementsByTagName("script")[0];
+          s.async = true,
+          s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+          el.parentNode.insertBefore(s, el);
+        })();
+      </script>
+      <noscript>
+        <img src="https://sb.scorecardresearch.com/p?c1=2&c2=33003457&cv=2.0&cj=1" />
+      </noscript>
+    <!-- End comScore Tag -->
+
+    <script>
+      function endsTracker() {
+        if(window.location.pathname == '/'){
+          var script = document.createElement('script'),
+          scripts = document.getElementsByTagName('script')[0];
+          script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+          script['data-ad-client'] = 'ca-pub-3778681918825163'
+          script.async = true;
+          scripts.parentNode.insertBefore(script, scripts);
+        }
+      }
+    </script>
+
+    <link rel="preload" href="/js/runtime.9aff7263.js" as="script"><link rel="preload" href="/js/vendor.0513a643.js" as="script"><link rel="preload" href="/css/app.e1b43b74.css" as="style"><link rel="preload" href="/js/app.7be519c8.js" as="script"><link rel="prefetch" href="/css/0111b856.18ee5c91.css"><link rel="prefetch" href="/css/01877486.418986b6.css"><link rel="prefetch" href="/css/0254b221.ed5fd4fa.css"><link rel="prefetch" href="/css/02c0b24e.148a63cf.css"><link rel="prefetch" href="/css/040c9a12.9d351106.css"><link rel="prefetch" href="/css/04c48d89.3dce615a.css"><link rel="prefetch" href="/css/051fb950.3dce615a.css"><link rel="prefetch" href="/css/058e56bc.b91509db.css"><link rel="prefetch" href="/css/08924ebe.4ca591b4.css"><link rel="prefetch" href="/css/0a998686.ed5fd4fa.css"><link rel="prefetch" href="/css/0b1e26c5.fdb68f7e.css"><link rel="prefetch" href="/css/0bc1e2e3.92ad2fba.css"><link rel="prefetch" href="/css/0bd9dfa2.edc2e375.css"><link rel="prefetch" href="/css/0ce7b04c.4f7fa3b3.css"><link rel="prefetch" href="/css/0f03d97e.0a8c98af.css"><link rel="prefetch" href="/css/14697c57.9bd617d9.css"><link rel="prefetch" href="/css/14722fae.9f4f599d.css"><link rel="prefetch" href="/css/14d09c56.dbb1de57.css"><link rel="prefetch" href="/css/165ae646.dc746e0a.css"><link rel="prefetch" href="/css/189d2ef7.2a2e2211.css"><link rel="prefetch" href="/css/191612e7.9bd617d9.css"><link rel="prefetch" href="/css/1b1c89a0.fa984ca0.css"><link rel="prefetch" href="/css/1b3cbc9b.9d351106.css"><link rel="prefetch" href="/css/1b9ae727.f3871cff.css"><link rel="prefetch" href="/css/1bc01632.b91509db.css"><link rel="prefetch" href="/css/1d09a5f0.9f4f599d.css"><link rel="prefetch" href="/css/1efc8738.dc746e0a.css"><link rel="prefetch" href="/css/226abe3f.9bd617d9.css"><link rel="prefetch" href="/css/2414a14c.f3f9152b.css"><link rel="prefetch" href="/css/255c93b7.9bd617d9.css"><link rel="prefetch" href="/css/26a0864a.b91509db.css"><link rel="prefetch" href="/css/27e7e49c.b91509db.css"><link rel="prefetch" href="/css/2ccf3f1c.07fc4129.css"><link rel="prefetch" href="/css/2eae17dc.fb97dd4c.css"><link rel="prefetch" href="/css/31fbad1d.5def8283.css"><link rel="prefetch" href="/css/33bf6a4d.2b00410c.css"><link rel="prefetch" href="/css/36ada084.fb2db911.css"><link rel="prefetch" href="/css/3b927ec0.c2570792.css"><link rel="prefetch" href="/css/3be657d9.32103e64.css"><link rel="prefetch" href="/css/3e6bcf5a.242c5bd9.css"><link rel="prefetch" href="/css/3ed18bc0.877427de.css"><link rel="prefetch" href="/css/3f9b6bee.ed5fd4fa.css"><link rel="prefetch" href="/css/4013d19c.dbb1de57.css"><link rel="prefetch" href="/css/41c6e9f9.86f499d9.css"><link rel="prefetch" href="/css/448ec56a.c2b9ddfd.css"><link rel="prefetch" href="/css/459824ab.fceb6a51.css"><link rel="prefetch" href="/css/45db95e4.ac1a7084.css"><link rel="prefetch" href="/css/462d08d9.42cc9451.css"><link rel="prefetch" href="/css/4959932e.3dce615a.css"><link rel="prefetch" href="/css/49dabf73.f1da425e.css"><link rel="prefetch" href="/css/4e1117f4.2bcc0c17.css"><link rel="prefetch" href="/css/501b1086.9e416a92.css"><link rel="prefetch" href="/css/52e82374.c752f8d6.css"><link rel="prefetch" href="/css/556bba9c.cfb55b46.css"><link rel="prefetch" href="/css/58288b1e.418986b6.css"><link rel="prefetch" href="/css/586d3592.7a775c69.css"><link rel="prefetch" href="/css/5aa03d20.3aae4ed7.css"><link rel="prefetch" href="/css/5de7fd72.10ab52b5.css"><link rel="prefetch" href="/css/61b6ebe5.035609a9.css"><link rel="prefetch" href="/css/675ad5e5.4beb8f58.css"><link rel="prefetch" href="/css/67e49f54.915526bb.css"><link rel="prefetch" href="/css/695aa9d5.32dc2362.css"><link rel="prefetch" href="/css/697ec438.ae6bad09.css"><link rel="prefetch" href="/css/6acca20e.9d351106.css"><link rel="prefetch" href="/css/6bdc7bdb.4a0116dc.css"><link rel="prefetch" href="/css/6c2bde06.6eb0f13c.css"><link rel="prefetch" href="/css/6db11656.e2181e70.css"><link rel="prefetch" href="/css/6e98f2c9.9f4f599d.css"><link rel="prefetch" href="/css/6f89e14c.1dbfc4c1.css"><link rel="prefetch" href="/css/71d7d669.07fc4129.css"><link rel="prefetch" href="/css/7256f81d.418986b6.css"><link rel="prefetch" href="/css/74820297.e05e6d6b.css"><link rel="prefetch" href="/css/7559499e.fea4b4d0.css"><link rel="prefetch" href="/css/7594b27d.9deab73c.css"><link rel="prefetch" href="/css/7713c7e6.7a918795.css"><link rel="prefetch" href="/css/77318247.9f4f599d.css"><link rel="prefetch" href="/css/780681ee.f4db4259.css"><link rel="prefetch" href="/css/79817c23.67f3ec02.css"><link rel="prefetch" href="/css/799f97e9.322e4baa.css"><link rel="prefetch" href="/css/7cf335a2.8fb7d22d.css"><link rel="prefetch" href="/css/7dbbcb79.9d351106.css"><link rel="prefetch" href="/css/7e14d61e.34287bcc.css"><link rel="prefetch" href="/css/7ebdd494.148a63cf.css"><link rel="prefetch" href="/css/88009a50.9f4f599d.css"><link rel="prefetch" href="/css/8d5182d6.fdb708ba.css"><link rel="prefetch" href="/css/92c931a2.1da602c9.css"><link rel="prefetch" href="/css/a1ea92b2.418986b6.css"><link rel="prefetch" href="/css/a393f7f4.c2570792.css"><link rel="prefetch" href="/css/a8c96c3a.ae0d0e0c.css"><link rel="prefetch" href="/css/b0544c22.4071b9f8.css"><link rel="prefetch" href="/css/b37d40e6.07fc4129.css"><link rel="prefetch" href="/css/b714edfe.4b48e6da.css"><link rel="prefetch" href="/css/b9aa913e.8a55e750.css"><link rel="prefetch" href="/css/be52163e.9f4f599d.css"><link rel="prefetch" href="/css/c05450c6.07fc4129.css"><link rel="prefetch" href="/css/c1a3dc88.9f4f599d.css"><link rel="prefetch" href="/css/c48ebe12.52046b62.css"><link rel="prefetch" href="/css/c847f0fe.9f4f599d.css"><link rel="prefetch" href="/css/c9a79a86.2324463c.css"><link rel="prefetch" href="/css/ca48fb22.07fc4129.css"><link rel="prefetch" href="/css/ca59c0e4.6bed2382.css"><link rel="prefetch" href="/css/cbfa0e5e.b1718b69.css"><link rel="prefetch" href="/css/d2d52ffc.3920ac41.css"><link rel="prefetch" href="/css/eaf72ad2.f3e88c24.css"><link rel="prefetch" href="/css/eda18d42.4f7fa3b3.css"><link rel="prefetch" href="/css/f06f54e2.ed5fd4fa.css"><link rel="prefetch" href="/css/f127db8e.feebc2e8.css"><link rel="prefetch" href="/css/f7ec2390.ab58e9ca.css"><link rel="prefetch" href="/css/fd98fafe.18726078.css"><link rel="prefetch" href="/js/0111b856.9b5ad21a.js"><link rel="prefetch" href="/js/01877486.1df10ff7.js"><link rel="prefetch" href="/js/0254b221.e472aa9a.js"><link rel="prefetch" href="/js/02c0b24e.913e3b4a.js"><link rel="prefetch" href="/js/040c9a12.a86a2949.js"><link rel="prefetch" href="/js/04c48d89.087b32f1.js"><link rel="prefetch" href="/js/051fb950.67c2036e.js"><link rel="prefetch" href="/js/058e56bc.d3071cea.js"><link rel="prefetch" href="/js/08924ebe.27a772fa.js"><link rel="prefetch" href="/js/0a998686.a99308dd.js"><link rel="prefetch" href="/js/0b1e26c5.b206591b.js"><link rel="prefetch" href="/js/0bc1e2e3.a569cca6.js"><link rel="prefetch" href="/js/0bd9dfa2.c1f2f33f.js"><link rel="prefetch" href="/js/0ce7b04c.78107aba.js"><link rel="prefetch" href="/js/0f03d97e.7866764b.js"><link rel="prefetch" href="/js/14697c57.b4274980.js"><link rel="prefetch" href="/js/14722fae.9e8bbb04.js"><link rel="prefetch" href="/js/14d09c56.01b0b969.js"><link rel="prefetch" href="/js/165ae646.a90dfced.js"><link rel="prefetch" href="/js/189d2ef7.93608f71.js"><link rel="prefetch" href="/js/191612e7.584056c2.js"><link rel="prefetch" href="/js/1b1c89a0.67a2d3e2.js"><link rel="prefetch" href="/js/1b3cbc9b.478bf74e.js"><link rel="prefetch" href="/js/1b9ae727.0905bdb5.js"><link rel="prefetch" href="/js/1bc01632.ecb4c719.js"><link rel="prefetch" href="/js/1d09a5f0.03775998.js"><link rel="prefetch" href="/js/1efc8738.90d1a68e.js"><link rel="prefetch" href="/js/226abe3f.35699460.js"><link rel="prefetch" href="/js/2414a14c.836c7cf9.js"><link rel="prefetch" href="/js/241d7c10.e63986bb.js"><link rel="prefetch" href="/js/255c93b7.b9303159.js"><link rel="prefetch" href="/js/26a0864a.c5e51d30.js"><link rel="prefetch" href="/js/27e7e49c.f2eaa791.js"><link rel="prefetch" href="/js/2b55a06f.a0a86638.js"><link rel="prefetch" href="/js/2ccf3f1c.153ae9b4.js"><link rel="prefetch" href="/js/2d0a45ac.af3b2296.js"><link rel="prefetch" href="/js/2d0aaefa.08b1a6fe.js"><link rel="prefetch" href="/js/2d0b723d.28f0de9a.js"><link rel="prefetch" href="/js/2d0bce37.0148f3a2.js"><link rel="prefetch" href="/js/2d0bd756.1765dfd5.js"><link rel="prefetch" href="/js/2d0bd945.58fe35f8.js"><link rel="prefetch" href="/js/2d0c1aec.a4a0f332.js"><link rel="prefetch" href="/js/2d0c267d.9855cfb0.js"><link rel="prefetch" href="/js/2d0c4873.b7a2a881.js"><link rel="prefetch" href="/js/2d0c76d8.2dd3d301.js"><link rel="prefetch" href="/js/2d0c7b7d.a47d885f.js"><link rel="prefetch" href="/js/2d0c8253.abf7b635.js"><link rel="prefetch" href="/js/2d0cfe1a.7adb09b7.js"><link rel="prefetch" href="/js/2d0d2f50.805437a5.js"><link rel="prefetch" href="/js/2d0d69a4.7651ce5a.js"><link rel="prefetch" href="/js/2d0e6639.56adcc33.js"><link rel="prefetch" href="/js/2d207bf2.6eecf097.js"><link rel="prefetch" href="/js/2d208c38.aa4efcc2.js"><link rel="prefetch" href="/js/2d209b42.591eec7c.js"><link rel="prefetch" href="/js/2d20ec3d.7ca35b8e.js"><link rel="prefetch" href="/js/2d20f3f4.5c9541bf.js"><link rel="prefetch" href="/js/2d21047a.e1657ff1.js"><link rel="prefetch" href="/js/2d2104c7.44cf2df1.js"><link rel="prefetch" href="/js/2d217dea.cb3c3577.js"><link rel="prefetch" href="/js/2d21f22a.fca8b8d9.js"><link rel="prefetch" href="/js/2d226548.170e8f74.js"><link rel="prefetch" href="/js/2d22d433.9ac72967.js"><link rel="prefetch" href="/js/2d230ad0.7581bd5d.js"><link rel="prefetch" href="/js/2d237d43.dc5ffcb7.js"><link rel="prefetch" href="/js/2eae17dc.ba6c9946.js"><link rel="prefetch" href="/js/31fbad1d.b590e7de.js"><link rel="prefetch" href="/js/33bf6a4d.66961031.js"><link rel="prefetch" href="/js/36ada084.210e570a.js"><link rel="prefetch" href="/js/3b927ec0.7e0d1198.js"><link rel="prefetch" href="/js/3be657d9.ce6c49a5.js"><link rel="prefetch" href="/js/3e6bcf5a.76e1b68e.js"><link rel="prefetch" href="/js/3ed18bc0.fbc794a8.js"><link rel="prefetch" href="/js/3f6f57d1.275e73c7.js"><link rel="prefetch" href="/js/3f712b8a.6442efc9.js"><link rel="prefetch" href="/js/3f9b6bee.686757d4.js"><link rel="prefetch" href="/js/4013d19c.2d6885e5.js"><link rel="prefetch" href="/js/41c6e9f9.a801dc5e.js"><link rel="prefetch" href="/js/433f0e8a.f7a70706.js"><link rel="prefetch" href="/js/448ec56a.313217ba.js"><link rel="prefetch" href="/js/459824ab.3c4e204a.js"><link rel="prefetch" href="/js/45db95e4.bfbf0e64.js"><link rel="prefetch" href="/js/462d08d9.deaf7c77.js"><link rel="prefetch" href="/js/4959932e.7315666a.js"><link rel="prefetch" href="/js/49dabf73.9a73df92.js"><link rel="prefetch" href="/js/4e1117f4.274dadc8.js"><link rel="prefetch" href="/js/501b1086.395143bb.js"><link rel="prefetch" href="/js/52e82374.23fdcaf8.js"><link rel="prefetch" href="/js/556bba9c.47426371.js"><link rel="prefetch" href="/js/58288b1e.4f97ac9f.js"><link rel="prefetch" href="/js/586d3592.fe4b9a19.js"><link rel="prefetch" href="/js/5aa03d20.16d6df63.js"><link rel="prefetch" href="/js/5c0adb46.331e24a4.js"><link rel="prefetch" href="/js/5de7fd72.2b533b46.js"><link rel="prefetch" href="/js/61b6ebe5.c7d63af8.js"><link rel="prefetch" href="/js/675ad5e5.04fb0b84.js"><link rel="prefetch" href="/js/67e49f54.90a066c9.js"><link rel="prefetch" href="/js/695aa9d5.c14d3426.js"><link rel="prefetch" href="/js/697ec438.bfd8322d.js"><link rel="prefetch" href="/js/6acca20e.4e060737.js"><link rel="prefetch" href="/js/6bdc7bdb.5d6f6815.js"><link rel="prefetch" href="/js/6c2bde06.f72adf84.js"><link rel="prefetch" href="/js/6db11656.c0353235.js"><link rel="prefetch" href="/js/6e98f2c9.f0a21fdb.js"><link rel="prefetch" href="/js/6f89e14c.f0669092.js"><link rel="prefetch" href="/js/71d7d669.8c651bf8.js"><link rel="prefetch" href="/js/7256f81d.37a32e6e.js"><link rel="prefetch" href="/js/74820297.70e936bc.js"><link rel="prefetch" href="/js/7559499e.5626b038.js"><link rel="prefetch" href="/js/7594b27d.11f4d6d2.js"><link rel="prefetch" href="/js/7713c7e6.cedb8e63.js"><link rel="prefetch" href="/js/77318247.9a568874.js"><link rel="prefetch" href="/js/780681ee.18028514.js"><link rel="prefetch" href="/js/79817c23.5cbe5ffa.js"><link rel="prefetch" href="/js/799f97e9.44ddf8ff.js"><link rel="prefetch" href="/js/7cf335a2.f426c48c.js"><link rel="prefetch" href="/js/7dbbcb79.8f07cb37.js"><link rel="prefetch" href="/js/7e14d61e.9a0fc043.js"><link rel="prefetch" href="/js/7ebdd494.efc37a87.js"><link rel="prefetch" href="/js/88009a50.4ba5e9d7.js"><link rel="prefetch" href="/js/8d5182d6.a5a7b4ca.js"><link rel="prefetch" href="/js/90595c0c.b8950fdc.js"><link rel="prefetch" href="/js/92c931a2.5e550038.js"><link rel="prefetch" href="/js/a1ea92b2.1a5ee6c9.js"><link rel="prefetch" href="/js/a393f7f4.554bf930.js"><link rel="prefetch" href="/js/a8c96c3a.47e662f6.js"><link rel="prefetch" href="/js/b0544c22.502b0409.js"><link rel="prefetch" href="/js/b37d40e6.338bf66b.js"><link rel="prefetch" href="/js/b714edfe.2bdc56d6.js"><link rel="prefetch" href="/js/b9aa913e.03721755.js"><link rel="prefetch" href="/js/be52163e.cfe3f425.js"><link rel="prefetch" href="/js/c05450c6.ce69c1da.js"><link rel="prefetch" href="/js/c1a3dc88.ae902b6e.js"><link rel="prefetch" href="/js/c48ebe12.08daf559.js"><link rel="prefetch" href="/js/c847f0fe.6f75ebeb.js"><link rel="prefetch" href="/js/c9a79a86.f3a8d61d.js"><link rel="prefetch" href="/js/ca48fb22.e5ee129c.js"><link rel="prefetch" href="/js/ca59c0e4.4e578039.js"><link rel="prefetch" href="/js/caafa034.cc278174.js"><link rel="prefetch" href="/js/cbfa0e5e.7066193f.js"><link rel="prefetch" href="/js/d2d52ffc.a2e912bd.js"><link rel="prefetch" href="/js/e20a4a34.f84afdfd.js"><link rel="prefetch" href="/js/eaf72ad2.62829e71.js"><link rel="prefetch" href="/js/eda18d42.c0552c7b.js"><link rel="prefetch" href="/js/f06f54e2.6427ba46.js"><link rel="prefetch" href="/js/f127db8e.d7917b31.js"><link rel="prefetch" href="/js/f7ec2390.01aecf22.js"><link rel="prefetch" href="/js/fd98fafe.e8e6d990.js"><link rel="prefetch" href="/statics/env-vars.js"><link rel="prefetch" href="/statics/fonts/HelveticaNeue/style.css"><link rel="prefetch" href="/statics/js/conviva/NexHandshake.js"><link rel="prefetch" href="/statics/js/conviva/NexHandshakeLive.js"><link rel="prefetch" href="/statics/js/conviva/configs.js"><link rel="prefetch" href="/statics/js/conviva/configsLive.js"><link rel="prefetch" href="/statics/js/conviva/conviva-core-sdk.min.js"><link rel="prefetch" href="/statics/js/conviva/conviva-html5native-impl.js"><link rel="stylesheet" href="/css/app.e1b43b74.css"></head>
+    <body>
+      <!-- Google Tag Manager (noscript) -->
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPXGGTK&gtm_auth=5NNZ52X2emxCtW3jqCoT_g&gtm_preview=env-12&gtm_cookies_win=x"
+            height="0" width="0" style="display:none;visibility:hidden">
+          </iframe>
+        </noscript>
+      <!-- End Google Tag Manager (noscript) -->
+      <script>
+        window.__INITIAL_STATE__={"auth":{"tokenApi":null,"webpSupported":"","temp_email":"","temp_password":"","uid":"","isPayTv":"no","user_photo":"","isLogin":null,"userProfile":null,"bundles":null,"LoginWith":null},"search":{"key":null,"backUrl":"\u002F"},"settings":{"loginModal":false,"regisModal":false,"onboardingModal":false,"choseFreeModal":false,"findMenu":false,"platform":"desktop","meta_data":null,"golden_id":null,"m_desc":"","m_image":"","browser":"chrome","free_5m_notif":"open","packageTab":"mypackage","bigDayType":"none","dataContentForMeta":{"title":"Upin & Ipin","synopsis":"Upin dan Ipin merupakan sepasang kembar berusia belia yang tinggal bersama Kak Ros dan Mak Uda (biasa dipanggil Opah) di Kampung Durian Runtuh setelah kematian kedua orang tua mereka sewaktu masih bayi.","url_img":"https:\u002F\u002Fstag-legacy.visionplus.id\u002Fmedia\u002Fimages\u002Fseries\u002F8a6456bc\u002F036a.jpg","url_wide_poster":"https:\u002F\u002Fstag-legacy.visionplus.id\u002Fmedia\u002Fimages\u002Fseries\u002Fdeeb9c7c\u002F61db_r32.jpg","duration":"30","year":"2019","actor":"[{\"@type\":\"Person\",\"name\":\"Wihlarko Prasdegdho\"}]","director":"[{\"@type\":\"Person\",\"name\":\"MNC TV\"}]","containsSeason":"[{\"@type\":\"TVSeason\",\"numberOfEpisodes\":5,\"name\":\"Season 1\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Dugaan\"},{\"@type\":\"TVEpisode\",\"name\":\"Nikmat\"},{\"@type\":\"TVEpisode\",\"name\":\"Terawih\"},{\"@type\":\"TVEpisode\",\"name\":\"Esok Raya\"},{\"@type\":\"TVEpisode\",\"name\":\"Hari Raya\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":12,\"name\":\"Season 2\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Tadika\"},{\"@type\":\"TVEpisode\",\"name\":\"Anak Bulan\"},{\"@type\":\"TVEpisode\",\"name\":\"Adat\"},{\"@type\":\"TVEpisode\",\"name\":\"Tamak\"},{\"@type\":\"TVEpisode\",\"name\":\"Lailatul Qadr\"},{\"@type\":\"TVEpisode\",\"name\":\"Kisah dan Tauladan\"},{\"@type\":\"TVEpisode\",\"name\":\"Sayang Kak Ros\"},{\"@type\":\"TVEpisode\",\"name\":\"Ketupat\"},{\"@type\":\"TVEpisode\",\"name\":\"Zakat Fitrah\"},{\"@type\":\"TVEpisode\",\"name\":\"Malam Syahdu\"},{\"@type\":\"TVEpisode\",\"name\":\"Pegi Raya\"},{\"@type\":\"TVEpisode\",\"name\":\"Berkat\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":19,\"name\":\"Season 3\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Berpuasa Bersama Kawan baru\"},{\"@type\":\"TVEpisode\",\"name\":\"Air Kolah Air Laut\"},{\"@type\":\"TVEpisode\",\"name\":\"Diri Bersih Badan Sihat 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Dan Apin 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Diri Bersih Badan Sihat 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Dan Apin 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Basikal Baru\"},{\"@type\":\"TVEpisode\",\"name\":\"Ambil Galah Tolong Tunjukan\"},{\"@type\":\"TVEpisode\",\"name\":\"Berkebun 1-2\"},{\"@type\":\"TVEpisode\",\"name\":\"Gosok Jangan Tak Gosok\"},{\"@type\":\"TVEpisode\",\"name\":\"Istimewa Hari Ibu 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Istimewa Hari Ibu 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Jejak Rembo 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Jejak Rembo 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Jejak Rembo 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Ke Pulau Harta Karun 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Ke Pulau Harta Karun 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Ke Pulau Harta Karun 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Ke Pulau Harta Karun 4\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":20,\"name\":\"Season 5\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Belajar Lagi 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Belajar Lagi 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Belajar Lagi 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Gelapnya 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Gelapnya 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Gelapnya 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Cerita Kami 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Cerita Kami 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Cerita Kami 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Garang Ke Sayang 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Garang Ke Sayang 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Garang Ke Sayang 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Iklas dari Hati 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Iklas dari Hati 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Iklas dari Hati 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Jari Jemari Saleh\"},{\"@type\":\"TVEpisode\",\"name\":\"Jari Jemari Saleh 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Jari Jemari Saleh 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kuih Untuk Opah\"},{\"@type\":\"TVEpisode\",\"name\":\"Kuih Untuk Opah 2\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":18,\"name\":\"Season 6\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Hari Misteri Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Hari Misteri Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Hari Misteri Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Cari dan Simpan Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Cari dan Simpan Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Cari dan Simpan Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Iqra Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Iqra Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Iqra Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Bulan Hantu Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Bulan Hantu Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Bulan Hantu Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara ke Pulau Harta Karun Bagian 9\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara ke Pulau Harta Karun Bagian 10\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara ke Pulau Harta Karun Bagian 11\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Kecil-Kecilan Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Kecil-Kecilan Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Kecil-Kecilan Bagian 3\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":19,\"name\":\"Season 7\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Daun Hijau Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Daun Hijau Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Daun Hijau Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Bahaya Jerebu Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Bahaya Jerebu Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Bahaya Jerebu Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Boria Suka-Suka\"},{\"@type\":\"TVEpisode\",\"name\":\"Barang Silam Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Barang Silam Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Barang Silam Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Dugaan Ramadhan Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Dugaan Ramadhan Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Dugaan Ramadhan Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Gigi Susu\"},{\"@type\":\"TVEpisode\",\"name\":\"Gong Xi Fa Cai\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembar-Kembar Nakal\"},{\"@type\":\"TVEpisode\",\"name\":\"Nenek Si Bongkok Tiga Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Nenek Si Bongkok Tiga Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Nenek Si Bongkok Tiga Bagian 3\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":19,\"name\":\"Season 8\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Cuai-Cuai Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Cuai-Cuai Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Cuai-Cuai Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Angkasa Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Angkasa Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Angkasa Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Belajar Sambil Main\"},{\"@type\":\"TVEpisode\",\"name\":\"Hasil Tempatan Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Hasil Tempatan Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Hasil Tempatan Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Jaga dan Hargai Mata Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Jaga dan Hargai Mata Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Jaga dan Hargai Mata Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kail Laga Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Kail Laga Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Kail Laga Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kesayanganku Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Kesayanganku Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Kesayanganku Bagian 3\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":18,\"name\":\"Season 9\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Alkisah Malam Puasa Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Alkisah Malam Puasa Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Alkisah Malam Puasa Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Cip Cip Cip Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Cip Cip Cip Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Cip Cip Cip Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Dah Bocor Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Dah Bocor Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Dah Bocor Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Dulu dan Sekarang Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Dulu dan Sekarang Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Dulu dan Sekarang Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Isi Masa Lapang Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Isi Masa Lapang Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Isi Masa Lapang Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Jambatan Ilmu Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Jambatan Ilmu Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Jambatan Ilmu Bagian 3\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":18,\"name\":\"Season 10\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Bila Cuti Sekolah Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Bila Cuti Sekolah Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Bila Cuti Sekolah Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Disebalik Tabir Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Disebalik Tabir Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Disebalik Tabir Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Aku Sebuah Jam Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Aku Sebuah Jam Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Aku Sebuah Jam Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Animasi Terakhir Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Animasi Terakhir Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Animasi Terakhir Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Ekosistem Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Ekosistem Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Ekosistem Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Indahnya Ramadhan Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Indahnya Ramadhan Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Indahnya Ramadhan Bagian 3\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":18,\"name\":\"Season 11\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Azam Puasa bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Azam Puasa bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Azam Puasa bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Amal Jariah Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Amal Jariah Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Amal Jariah Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Hapuskan Virus Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Hapuskan Virus Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Hapuskan Virus Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Jom Hidup Sehat Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Jom Hidup Sehat Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Jom Hidup Sehat Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Alam Dino Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Alam Dino Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Kembara Alam Dino Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Kompang Dipalu Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Kompang Dipalu Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Kompang Dipalu Bagian 3\"}]},{\"@type\":\"TVSeason\",\"numberOfEpisodes\":15,\"name\":\"Season 12\",\"episode\":[{\"@type\":\"TVEpisode\",\"name\":\"Apa Benda Tu Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Apa Benda Tu Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Apa Benda Tu Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Dah Besar Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Dah Besar Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Dah Besar Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Aku Sebuah Buku Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Aku Sebuah Buku Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Aku Sebuah Buku Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Alunan Ramadhan Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Alunan Ramadhan Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Alunan Ramadhan Bagian 3\"},{\"@type\":\"TVEpisode\",\"name\":\"Idola Misteri Bagian 1\"},{\"@type\":\"TVEpisode\",\"name\":\"Idola Misteri Bagian 2\"},{\"@type\":\"TVEpisode\",\"name\":\"Idola Misteri Bagian 3\"}]}]"},"author":"","bannerClusterCategory":"","idClusterCategory":"","meta_channel":null,"dataCatchupForMeta":"","notifFreeAccountModal":false,"notifPremiumAccount":false,"iosVersion":96,"userAgent":"mozilla\u002F5.0 (x11; linux x86_64) applewebkit\u002F537.36 (khtml, like gecko) chrome\u002F96.0.4664.110 safari\u002F537.36"},"notifications":{"totalReminder":0,"totalNotif":0},"content":{"listOfCluster":{},"lisOfContentCluster":[],"lastUpdate":"","localUpdate":""},"games":{"statusGames":false,"urlGames":""}}</script>
+        <script defer/>src="/js/runtime.9aff7263.js"</script>
+        <script defer>src="/js/vendor.0513a643.js"</script>
+        <script defer>src="/js/app.7be519c8.js"</script>
+      <!-- Midtrans -->
+        <script id="midtrans-script" type="text/javascript"
+        src="https://api.midtrans.com/v2/assets/js/midtrans-new-3ds.min.js"
+        data-environment="sandbox"
+        data-client-key="SB-Mid-client-pDiTF0FUV5EbdoIi"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+            <script>src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"</script>
+            <script>src="/js/firebase/init.js"</script>
+        <script>
+            var webLoginUrl = "https://m.rctiplus.com/login?referrer=https://games.rctiplus.com";
+        </script>
+        <script>src="/js/home/guest.js"</script>
+        <noscript>RCTI+</noscript>
+        <div id="root"></div>
+    </body>
+  
+  </html>
